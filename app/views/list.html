@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title></title>
+</head>
+
+<body>
+    <div class="header">
+        <ul class="nav nav-pills pull-right">
+            <li><a ng-href="#">Home</a></li>
+
+            <li class="active"><a ng-href="#/list">List</a></li>
+        </ul>
+
+        <h3>Contractions</h3>
+    </div>
+    <section ng-controller="ListCtrl" class="panel panel-default">
+	    <div class="panel-body">
+	    	<div class="btn-group">
+                <a class="btn btn-default" ng-class="{selected: period == ''} " href="#/list/">Last Hour</a>
+                <a class="btn btn-default" ng-class="{selected: period == 'last-hour'}" href="#/list/last-day">Last 24 Hours</a>
+                <a class="btn btn-default" ng-class="{selected: period == 'last-day'}" href="#/list/all">All</a>
+		    </div>
+		    <table id="main" class="table" ng-show="contractions.length" ng-cloak>
+		    	<thead>
+		    		<tr>
+			    		<th>Time</th>
+			    		<th>Length</th>
+						<th>Severity</th>
+		    		</tr>
+		    	</thead>
+		        <tbody>
+		            <tr ng-repeat="contraction in contractions | orderBy:'-start_time' | filter:timeFilter">
+		                <td><span am-time-ago="contraction.start_time"></span></td>
+		                <td>{{contraction.length}}</td>
+		                <td><span class="label label-warning">{{contraction.severity}}</span></td>
+		            </tr>
+		        </tbody>
+		    </table>
+	    </div>
+    </section>
+</body>
+</html>

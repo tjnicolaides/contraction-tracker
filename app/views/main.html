@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title></title>
+</head>
+
+<body>
+    <div class="header">
+        <ul class="nav nav-pills pull-right">
+            <li class="active"><a ng-href="#">Home</a></li>
+
+            <li><a ng-href="#/list">List</a></li>
+        </ul>
+
+        <h3>Contractions</h3>
+    </div>
+
+    <section id="contractionapp" ng-controller="MainCtrl" class="panel panel-default">
+        <div class="panel-body">
+                <form class="form-inline" role="form">
+                    <button id="time-contraction" class="btn btn-default" ng-click="timeContraction(contraction)">Start</button>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="contraction.start_time">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="contraction.end_time">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="range" min="1" max="10" value="1" step="1" ng-model="contraction.severity">
+                    </div>
+                </form>
+                <hr>
+                <button id="add-contraction" class="btn btn-default" ng-click="addContraction(contraction)">Add Contraction</button>
+        </div>
+    </section>
+</body>
+</html>
